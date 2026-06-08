@@ -1,4 +1,0 @@
-TestFile!
-
-app_name: ${{ values.app_name }}
-app_env: ${{ values.app_env }}
