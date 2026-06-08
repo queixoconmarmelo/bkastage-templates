@@ -57,13 +57,13 @@ jobs:
       - name: Modify values file
         uses: mikefarah/yq@v4.44.3
         with:
-          cmd: yq -i '.image.tag = "${{ '${{needs.ci.outputs.commit_id}} }}'"' charts/${{values.app_name}}/values-${{values.app_env}}.yaml
+          cmd: yq -i '.image.tag = "${{ '${{needs.ci.outputs.commit_id}}' }}"' charts/${{values.app_name}}/values-${{values.app_env}}.yaml
 
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'Updates values.yaml with commit ${{needs.ci.outputs.commit_id}}'
+          message: "Updates values.yaml with commit ${{ '${{needs.ci.outputs.commit_id}}' }}"
           default_author: github_actions
           github_token: ${{ '${{ secrets.GITHUB_TOKEN }}' }}
 
